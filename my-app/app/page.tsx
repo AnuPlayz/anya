@@ -2,17 +2,9 @@
 import Link from "next/link"
 import { siteConfig } from "@/config/site"
 import { buttonVariants } from "@/components/ui/button"
-import {
-  ConnectWallet,
-  darkTheme,
-} from "@thirdweb-dev/react";
-import {
-  LogInWithAnonAadhaar,
-  useAnonAadhaar,
-  AnonAadhaarProof,
-} from "anon-aadhaar-react";
+import { ConnectWallet, darkTheme } from "@thirdweb-dev/react";
+import { useAnonAadhaar } from "anon-aadhaar-react";
 import { useEffect } from "react";
-import { Typography } from "@/components/typography";
 import { Aadhaar } from "@/components/aadhaar";
 
 
