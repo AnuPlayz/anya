@@ -7,14 +7,13 @@ import {
     CardFooter,
     CardHeader,
     CardTitle,
-} from "@/components/ui/card"
-import { useRouter } from 'next/navigation'
-
+} from "@/components/ui/card";
 
 export default function Component() {
     const { contract } = useContract("0x7194f5404B7E34E8D9A27580a1fe8d63feCFF984");
-    const { data, isLoading } = useContractRead(contract, "getPolls", []);
-    const router = useRouter()
+    const id = 1;
+    const { data, isLoading } = useContractRead(contract, "getPoll", [id]);
+
     if (isLoading) {
         return <div>Loading...</div>;
     }
@@ -38,9 +37,6 @@ export default function Component() {
                         <CardFooter className="grid grid-cols-2 text-center">
                             <p>Starts at: {poll.startsAt.toString()}</p>
                             <p>Ends at: {poll.endsAt.toString()}</p>
-                            <button type="button" onClick={() => router.push(`/post/${poll.id}`)}>
-                                Click me
-                            </button>
                         </CardFooter>
                     </Card>
                 ))}
@@ -48,3 +44,4 @@ export default function Component() {
         </>
     );
 }
+
