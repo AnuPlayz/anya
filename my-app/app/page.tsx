@@ -57,7 +57,7 @@ export default function IndexPage() {
             GitHub
           </Link>
         </div>
-        <div className="flex gap-8">
+        <div className="flex flex-row mt-10">
           <Aadhaar />
         </div>
         <div>
