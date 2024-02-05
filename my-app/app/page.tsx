@@ -1,30 +1,47 @@
+"use client"
 import Link from "next/link"
-
 import { siteConfig } from "@/config/site"
 import { buttonVariants } from "@/components/ui/button"
+import {
+  ConnectWallet,
+  darkTheme,
+} from "@thirdweb-dev/react";
+
 
 export default function IndexPage() {
   return (
     <section className="container grid items-center gap-6 pb-8 pt-6 md:py-10">
       <div className="flex max-w-[980px] flex-col items-start gap-2">
         <h1 className="text-3xl font-extrabold leading-tight tracking-tighter md:text-4xl">
-          Your goto voting application <br className="hidden sm:inline" />
-          built with Next.Js and Solidity.
+          Beautifully designed components <br className="hidden sm:inline" />
+          built with Radix UI and Tailwind CSS.
         </h1>
         <p className="max-w-[700px] text-lg text-muted-foreground">
-          Accessible and customizable elections, polls, and voting systems that you can easily use.
-          Free. Open Source. And Next.js 13 Ready.
+          Accessible and customizable components that you can copy and paste
+          into your apps. Free. Open Source. And Next.js 13 Ready.
         </p>
       </div>
       <div className="flex gap-4">
-        <Link
-          href={siteConfig.links.docs}
-          target="_blank"
-          rel="noreferrer"
-          className={buttonVariants()}
-        >
-          Connect Wallet
-        </Link>
+        <ConnectWallet
+          theme={darkTheme({
+            colors: {
+              secondaryIconHoverBg: "#22232b",
+              accentText: "#7c3aed",
+              accentButtonBg: "#7c3aed",
+              secondaryButtonBg: "#7c3aed",
+              secondaryIconColor: "#7c3aed",
+              primaryButtonBg: "#7c3aed",
+              primaryButtonText: "#ebecf0",
+              secondaryButtonHoverBg: "#d6d9e5",
+              connectedButtonBg: "#7c3aed",
+              connectedButtonBgHover: "#1f2937",
+              walletSelectorButtonHoverBg:
+                "#1f2937",
+              secondaryText: "#c3c0d8",
+            },
+          })}
+          modalSize={"wide"}
+        />
         <Link
           target="_blank"
           rel="noreferrer"

@@ -1,9 +1,9 @@
 export type SiteConfig = typeof siteConfig
 
 export const siteConfig = {
-  name: "Pixel Voters",
+  name: "Pixel Vote",
   description:
-    "Beautifully designed blockchain voting application built by Aniruddh.",
+    "Beautifully designed blockchain based voting application.",
   mainNav: [
     {
       title: "Home",
@@ -12,7 +12,7 @@ export const siteConfig = {
   ],
   links: {
     twitter: "https://twitter.com/ani__x_",
-    github: "https://github.com/AnuPlayz/anya",
+    github: "https://github.com/AnuPlayz",
     docs: "#",
   },
 }
