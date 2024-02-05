@@ -6,8 +6,8 @@ export const siteConfig = {
     "Beautifully designed blockchain based voting application.",
   mainNav: [
     {
-      title: "Home",
-      href: "/",
+      title: "Docs",
+      href: "/docs",
     },
   ],
   links: {

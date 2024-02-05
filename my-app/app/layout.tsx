@@ -1,6 +1,6 @@
 "use client"
 import "@/styles/globals.css"
-import { Metadata } from "next"
+import { AnonAadhaarProvider } from "anon-aadhaar-react";
 
 import {
   ThirdwebProvider,
@@ -11,7 +11,6 @@ import {
   embeddedWallet,
 } from "@thirdweb-dev/react";
 
-import { siteConfig } from "@/config/site"
 import { fontSans } from "@/lib/fonts"
 import { cn } from "@/lib/utils"
 import { SiteHeader } from "@/components/site-header"
@@ -27,7 +26,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
     <>
       <ThirdwebProvider
         activeChain="mumbai"
-        clientId="YOUR_CLIENT_ID"
+        clientId="db6a42c09cffd69f9948764333016f18"
         supportedWallets={[
           metamaskWallet(),
           coinbaseWallet({ recommended: true }),
@@ -44,24 +43,29 @@ export default function RootLayout({ children }: RootLayoutProps) {
             },
           }),
         ]}
-      >
-        <html lang="en" suppressHydrationWarning>
-          <head />
-          <body
-            className={cn(
-              "min-h-screen bg-background font-sans antialiased",
-              fontSans.variable
-            )}
-          >
-            <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-              <div className="relative flex min-h-screen flex-col">
-                <SiteHeader />
-                <div className="flex-1">{children}</div>
-              </div>
-              <TailwindIndicator />
-            </ThemeProvider>
-          </body>
-        </html>
+      > 
+        <AnonAadhaarProvider _appId="db6a42c09cffd69f9948764333016f18">
+          <html lang="en" suppressHydrationWarning>
+            <head>
+              <title>Pixel Vote</title>
+              <link rel="icon" href="/logo.svg" />
+            </head>
+            <body
+              className={cn(
+                "min-h-screen bg-background font-sans antialiased",
+                fontSans.variable
+              )}
+            >
+              <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+                <div className="relative flex min-h-screen flex-col">
+                  <SiteHeader />
+                  <div className="flex-1">{children}</div>
+                </div>
+                <TailwindIndicator />
+              </ThemeProvider>
+            </body>
+          </html>
+        </AnonAadhaarProvider>
       </ThirdwebProvider>
     </>
   )
