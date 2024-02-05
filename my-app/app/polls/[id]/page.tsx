@@ -18,7 +18,10 @@ export default function Component() {
     const cid = useAddress();
     const id = useParams().id;
     const { data, isLoading } = useContractRead(contract, "getPoll", [id]);
-    const { data: contestants } = useContractRead(contract, "getContestants", [id])
+    console.log(data);
+    const { data: contestants } = useContractRead(contract, "getContestants", [id]);
+    const { data: contestant } = useContractRead(contract, "getContestant", [id, cid]);
+    
     if (isLoading) {
         return <div>Loading...</div>;
     }
