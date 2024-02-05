@@ -19,9 +19,8 @@ contract Voting {
     uint contestants;
     bool deleted;
     address director;
-    uint startsAt;
-    uint endsAt;
-    uint timestamp;
+    string startsAt;
+    string endsAt;
     address[] voters;
     string[] avatars;
   }
@@ -41,20 +40,20 @@ contract Voting {
   mapping(uint => mapping(address => bool)) contested;
   mapping(uint => mapping(uint => ContestantStruct)) contestants;
 
-  event Voted(address indexed voter, uint timestamp);
+  event Voted(address indexed voter);
 
   function createPoll(
     string memory image,
     string memory title,
     string memory description,
-    uint startsAt,
-    uint endsAt
+    string memory startsAt,
+    string memory endsAt
   ) public {
     require(bytes(title).length > 0, 'Title cannot be empty');
     require(bytes(description).length > 0, 'Description cannot be empty');
     require(bytes(image).length > 0, 'Image URL cannot be empty');
-    require(startsAt > 0, 'Start date must be greater than 0');
-    require(endsAt > startsAt, 'End date must be greater than start date');
+    require(bytes(startsAt).length > 0, 'Start date cannot be empty');
+    require(bytes(endsAt).length > 0, 'End date cannot be empty');
 
     totalPolls.increment();
 
@@ -66,8 +65,7 @@ contract Voting {
     poll.startsAt = startsAt;
     poll.endsAt = endsAt;
     poll.director = msg.sender;
-    poll.timestamp = currentTime();
-
+    
     polls[poll.id] = poll;
     pollExist[poll.id] = true;
   }
@@ -77,8 +75,8 @@ contract Voting {
     string memory image,
     string memory title,
     string memory description,
-    uint startsAt,
-    uint endsAt
+    string memory startsAt,
+    string memory endsAt
   ) public {
     require(pollExist[id], 'Poll not found');
     require(polls[id].director == msg.sender, 'Unauthorized entity');
@@ -87,7 +85,6 @@ contract Voting {
     require(bytes(image).length > 0, 'Image URL cannot be empty');
     require(!polls[id].deleted, 'Polling already deleted');
     require(polls[id].votes < 1, 'Poll has votes already');
-    require(endsAt > startsAt, 'End date must be greater than start date');
 
     polls[id].title = title;
     polls[id].description = description;
@@ -169,10 +166,6 @@ contract Voting {
     require(!voted[id][msg.sender], 'Already voted');
     require(!polls[id].deleted, 'Polling not available');
     require(polls[id].contestants > 1, 'Not enough contestants');
-    require(
-      currentTime() >= polls[id].startsAt && currentTime() < polls[id].endsAt,
-      'Voting must be in session'
-    );
 
     polls[id].votes++;
     polls[id].voters.push(msg.sender);
@@ -181,10 +174,6 @@ contract Voting {
     contestants[id][cid].voters.push(msg.sender);
     voted[id][msg.sender] = true;
 
-    emit Voted(msg.sender, currentTime());
-  }
-
-  function currentTime() internal view returns (uint256) {
-    return (block.timestamp * 1000) + 1000;
+    emit Voted(msg.sender);
   }
 }

@@ -22,7 +22,7 @@ const formSchema = z.object({
 })
 
 export default function CreatePoll() {
-    const { contract } = useContract("0xa777a9517C0761203C835974c494FA3f169fe441");
+    const { contract } = useContract("0x7194f5404B7E34E8D9A27580a1fe8d63feCFF984");
     const { mutateAsync: createPoll, isLoading } = useContractWrite(contract, "createPoll");
 
     const form = useForm<z.infer<typeof formSchema>>({
