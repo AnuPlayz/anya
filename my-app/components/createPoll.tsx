@@ -45,8 +45,6 @@ export default function CreatePoll() {
                 values.endsAt,
             ],
         });
-        console.log(pollval);
-        console.log(values);
     }
 
     return (
