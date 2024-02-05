@@ -9,6 +9,7 @@ import {
     CardTitle,
 } from "@/components/ui/card"
 import { useRouter } from 'next/navigation'
+import { Button } from "@/components/ui/button";
 
 
 export default function Component() {
@@ -35,12 +36,10 @@ export default function Component() {
                             <img src={poll.image} alt={poll.title} />
                             <CardDescription >{poll.description}</CardDescription>
                         </CardContent>
-                        <CardFooter className="grid grid-cols-2 text-center">
-                            <p>Starts at: {poll.startsAt.toString()}</p>
-                            <p>Ends at: {poll.endsAt.toString()}</p>
-                            <button type="button" onClick={() => router.push(`/post/${poll.id}`)}>
-                                Click me
-                            </button>
+                        <CardFooter className="flex flex-col justify-center items-center">
+                            <p className="text-sm">Starts at: {poll.startsAt.toString()}</p>
+                            <p className="text-sm">Ends at: {poll.endsAt.toString()}</p>
+                            <Button onClick={() => router.push(`/polls/${poll.id}`)}>Details</Button>
                         </CardFooter>
                     </Card>
                 ))}

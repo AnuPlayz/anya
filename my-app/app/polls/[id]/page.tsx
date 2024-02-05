@@ -34,9 +34,9 @@ export default function Component() {
                             <img src={poll.image} alt={poll.title} />
                             <CardDescription >{poll.description}</CardDescription>
                         </CardContent>
-                        <CardFooter className="grid grid-cols-2 text-center">
-                            <p>Starts at: {poll.startsAt.toString()}</p>
-                            <p>Ends at: {poll.endsAt.toString()}</p>
+                        <CardFooter className="flex flex-row justify-center items-center">
+                            <p>Starts at: {poll.startsAt}</p>
+                            <p>Ends at: {poll.endsAt}</p>
                         </CardFooter>
                     </Card>
                 ))}
