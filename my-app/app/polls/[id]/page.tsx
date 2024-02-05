@@ -1,5 +1,5 @@
 "use client"
-import { useContract, useContractRead, Web3Button } from "@thirdweb-dev/react";
+import { useContract, useContractRead, Web3Button, useAddress } from "@thirdweb-dev/react";
 
 import {
     Card,
@@ -15,7 +15,7 @@ import Contest from "@/components/contest";
 export default function Component() {
     const { contract } = useContract("0x7194f5404B7E34E8D9A27580a1fe8d63feCFF984");
 
-    const cid = "";
+    const cid = useAddress();
     const id = useParams().id;
     const { data, isLoading } = useContractRead(contract, "getPoll", [id]);
     const { data: contestants } = useContractRead(contract, "getContestants", [id])
@@ -64,7 +64,7 @@ export default function Component() {
                                             contract.call("vote", [id, cid])
                                         }}
                                     >
-                                        vote
+                                        Vote
                                     </Web3Button>
                                 </div>
                             </CardContent>
