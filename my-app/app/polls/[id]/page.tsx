@@ -22,6 +22,7 @@ export default function Component() {
     const id = useParams().id;
     const { data, isLoading } = useContractRead(contract, "getPoll", [id]);
     const { data: contestants } = useContractRead(contract, "getContestants", [id]);
+    console.log(contestants);
     if (isLoading) {
         return <SkeletonCard />;
     }
@@ -69,7 +70,7 @@ export default function Component() {
                                     <Web3Button
                                         contractAddress="0x7194f5404B7E34E8D9A27580a1fe8d63feCFF984"
                                         action={(contract) => {
-                                            contract.call("vote", [id, cid])
+                                            contract.call("vote", [id, contestant.id])
                                         }}
                                     >
                                         Vote
