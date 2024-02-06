@@ -18,10 +18,8 @@ export default function Component() {
     const cid = useAddress();
     const id = useParams().id;
     const { data, isLoading } = useContractRead(contract, "getPoll", [id]);
-    console.log(data);
     const { data: contestants } = useContractRead(contract, "getContestants", [id]);
-    const { data: contestant } = useContractRead(contract, "getContestant", [id, cid]);
-    
+
     if (isLoading) {
         return <div>Loading...</div>;
     }
@@ -49,10 +47,10 @@ export default function Component() {
                 <div className="p-10">
                     <Contest />
                 </div>
-                <h2 className="mb-10 scroll-m-20 border-b pb-2 text-3xl font-semibold tracking-tight transition-colors first:mt-0">
+                <h2 className="mb-10 scroll-m-20 border-b pb-2 text-2xl font-semibold tracking-tight transition-colors first:mt-0">
                     Current Contestants :
                 </h2>
-                <div className="grid md:grid-flow-col md:auto-cols-max auto-rows-auto">
+                <div className="grid md:grid-flow-col md:auto-cols-max auto-rows-auto gap-10">
                     {contestants.map((contestant: any) => (
                         <Card key={contestant.cid} className="w-[350px]">
                             <CardHeader className="text-center">

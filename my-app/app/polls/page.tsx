@@ -10,6 +10,8 @@ import {
 } from "@/components/ui/card"
 import { useRouter } from 'next/navigation'
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import { SkeletonCard } from "@/components/skeletonPolls";
 
 
 export default function Component() {
@@ -17,7 +19,7 @@ export default function Component() {
     const { data, isLoading } = useContractRead(contract, "getPolls", []);
     const router = useRouter()
     if (isLoading) {
-        return <div>Loading...</div>;
+        return <SkeletonCard />;
     }
 
     if (!data) {
@@ -26,6 +28,12 @@ export default function Component() {
 
     return (
         <>
+            <div className="flex flex-col justify-center items-center pt-10">
+                <Link href="/polls/create"><Button>Create Poll</Button></Link>
+                <h2 className="mb-10 scroll-m-20 border-b pb-2 text-2xl font-semibold tracking-tight transition-colors first:mt-0 pt-10">
+                    Current Polls :
+                </h2>
+            </div>
             <div className="grid md:grid-flow-col md:auto-cols-max auto-rows-auto gap-5 p-3">
                 {data.map((poll: any) => (
                     <Card className="w-[350px]">
