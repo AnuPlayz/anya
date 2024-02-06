@@ -2,7 +2,6 @@
 import { SkeletonCard } from "@/components/skeletonPolls";
 import { useContract, useContractRead } from "@thirdweb-dev/react";
 import { useParams } from "next/navigation";
-import { ReactElement, JSXElementConstructor, ReactNode, ReactPortal, PromiseLikeOfReactNode, Key } from "react";
 
 export default function Result() {
     const { id } = useParams();
