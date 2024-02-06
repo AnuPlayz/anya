@@ -69,7 +69,7 @@ export default function Component() {
                                     <Web3Button
                                         contractAddress="0x7194f5404B7E34E8D9A27580a1fe8d63feCFF984"
                                         action={(contract) => {
-                                            contract.call("vote", [id, contestant.cid])
+                                            contract.call("vote", [id, cid])
                                         }}
                                     >
                                         Vote

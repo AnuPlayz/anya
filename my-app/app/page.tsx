@@ -6,7 +6,6 @@ import { ConnectWallet, darkTheme } from "@thirdweb-dev/react";
 import { useAnonAadhaar } from "anon-aadhaar-react";
 import { useEffect } from "react";
 import { Aadhaar } from "@/components/aadhaar";
-import { ProgressBar } from "@/components/progressbar";
 
 
 export default function IndexPage() {
@@ -17,9 +16,6 @@ export default function IndexPage() {
 
   return (
     <>
-      <div className="fixed inset-x-0 top-30 h-16">
-        <ProgressBar />
-      </div>
       <section className="container grid items-center gap-6 pb-8 pt-6 md:py-10">
         <div>
           <div className="flex max-w-[980px] flex-col items-start gap-2">
