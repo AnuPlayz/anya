@@ -6,6 +6,7 @@ import { ConnectWallet, darkTheme } from "@thirdweb-dev/react";
 import { useAnonAadhaar } from "anon-aadhaar-react";
 import { useEffect } from "react";
 import { Aadhaar } from "@/components/aadhaar";
+import { ProgressBar } from "@/components/progressbar";
 
 
 export default function IndexPage() {
@@ -16,16 +17,24 @@ export default function IndexPage() {
 
   return (
     <>
+      <div className="fixed inset-x-0 top-30 h-16">
+        <ProgressBar />
+      </div>
       <section className="container grid items-center gap-6 pb-8 pt-6 md:py-10">
-        <div className="flex max-w-[980px] flex-col items-start gap-2">
-          <h1 className="text-3xl font-extrabold leading-tight tracking-tighter md:text-4xl">
-            Beautifully designed voting application <br className="hidden sm:inline" />
-            built with Next.js and Solidity.
-          </h1>
-          <p className="max-w-[700px] text-lg text-muted-foreground">
-            Easy to host elections and polls and get real-time dashboard for the results. <br />
-            Free. Open Source. And Ready.
-          </p>
+        <div>
+          <div className="flex max-w-[980px] flex-col items-start gap-2">
+            <h1 className="text-3xl font-extrabold leading-tight tracking-tighter md:text-4xl">
+              Beautifully designed voting application <br className="hidden sm:inline" />
+              built with Next.js and Solidity.
+            </h1>
+            <div className="md:flex md:flex-col items-end justify-end">
+              <img src="/pixelvote.png"></img>
+            </div>
+            <p className="max-w-[700px] text-lg text-muted-foreground">
+              Easy to host elections and polls and get real-time dashboard for the results. <br />
+              Free. Open Source. And Ready.
+            </p>
+          </div>
         </div>
         <div className="flex gap-4">
           <ConnectWallet
