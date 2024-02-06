@@ -144,7 +144,7 @@ contract Voting {
   function getContestant(uint id, uint cid) public view returns (ContestantStruct memory) {
     return contestants[id][cid];
   }
-
+  
   function getContestants(uint id) public view returns (ContestantStruct[] memory Contestants) {
     uint available;
     for (uint i = 1; i <= totalContestants.current(); i++) {
