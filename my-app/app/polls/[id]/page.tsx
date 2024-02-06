@@ -21,8 +21,9 @@ export default function Component() {
     const cid = useAddress();
     const id = useParams().id;
     const { data, isLoading } = useContractRead(contract, "getPoll", [id]);
+    console.log(data);
     const { data: contestants } = useContractRead(contract, "getContestants", [id]);
-
+    console.log(contestants);
     if (isLoading) {
         return <SkeletonCard />;
     }

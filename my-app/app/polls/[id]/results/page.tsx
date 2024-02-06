@@ -1,4 +1,5 @@
 "use client"
+import { Overview } from "@/components/overview";
 import { useAddress, useContract, useContractRead } from "@thirdweb-dev/react";
 import { useParams } from "next/navigation";
 
@@ -16,7 +17,7 @@ export default function Votes() {
 
     return (
         <div>
-            {contestantVotes}
+            <Overview />
         </div>
     )
 }
