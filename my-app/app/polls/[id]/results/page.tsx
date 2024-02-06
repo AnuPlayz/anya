@@ -1,24 +1,31 @@
 "use client"
-import { useEffect, useState } from 'react';
+import { SkeletonCard } from "@/components/skeletonPolls";
 import { useContract, useContractRead } from "@thirdweb-dev/react";
-import { useParams } from 'next/navigation';
+import { useParams } from "next/navigation";
+import { ReactElement, JSXElementConstructor, ReactNode, ReactPortal, PromiseLikeOfReactNode, Key } from "react";
 
-export default function Component() {
-const { contract } = useContract("0x7194f5404B7E34E8D9A27580a1fe8d63feCFF984");
-const id = useParams().id;
-const { data: contestantsData, isLoading: contestantsLoading } = useContractRead(contract, "getContestants", [id]);
-const [contestantVotes, setContestantVotes] = useState<any[]>([]); // Specify the type as any[]
+export default function Result() {
+    const { id } = useParams();
+    const { contract } = useContract("0x7194f5404B7E34E8D9A27580a1fe8d63feCFF984");
+    const { data, isLoading } = useContractRead(contract, "getContestants", [id]);
+    console.log(data);
 
-useEffect(() => {
-    if (!contestantsLoading && contestantsData) {
-        contestantsData.forEach((contestant: any[]) => {
-            const { data: contestantData, isLoading: contestantLoading } = useContractRead(contract, "getContestant", [id, contestant[3]]);
-            if (!contestantLoading && contestantData) {
-                setContestantVotes(prevVotes => [...prevVotes, contestantData]);
-            }
-        });
+    if (isLoading) {
+        return <SkeletonCard />;
     }
-}, [contestantsLoading, contestantsData]);
-
-  // Now, `contestantVotes` should contain the vote data for each contestant
+    return (
+        <>
+            <h1>Results</h1>
+            <div>
+                {data.map((item: any, index: number) => (
+                    <div key={index}>
+                        <img src={item[1]} alt={item[2]} />
+                        <p>{item[2]}</p>
+                        <p>{item[3]}</p>
+                        <p>Number of Votes: {parseInt(item[4]._hex)}</p>
+                    </div>
+                ))}
+            </div >
+        </>
+    )
 }
