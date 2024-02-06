@@ -1,5 +1,5 @@
 "use client"
-import { useContract, useContractRead, Web3Button, useAddress } from "@thirdweb-dev/react";
+import { useContract, useContractRead, Web3Button } from "@thirdweb-dev/react";
 
 import {
     Card,
@@ -18,11 +18,10 @@ import Link from "next/link";
 export default function Component() {
     const { contract } = useContract("0x7194f5404B7E34E8D9A27580a1fe8d63feCFF984");
 
-    const cid = useAddress();
     const id = useParams().id;
     const { data, isLoading } = useContractRead(contract, "getPoll", [id]);
     const { data: contestants } = useContractRead(contract, "getContestants", [id]);
-    console.log(contestants);
+
     if (isLoading) {
         return <SkeletonCard />;
     }

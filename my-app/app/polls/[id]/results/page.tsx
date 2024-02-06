@@ -5,6 +5,7 @@ import { useContract, useContractRead } from "@thirdweb-dev/react";
 import { useParams } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Label } from "recharts";
+import Head from "next/head";
 import {
     HoverCard,
     HoverCardContent,
@@ -15,18 +16,27 @@ import {
 export default function Result() {
     const { id } = useParams();
     const { contract } = useContract("0x7194f5404B7E34E8D9A27580a1fe8d63feCFF984");
+    const { data: poll } = useContractRead(contract, "getPoll", [id]);
     const { data, isLoading } = useContractRead(contract, "getContestants", [id]);
-    console.log(data);
+    console.log(poll.voters[0]);
 
     if (isLoading) {
         return <SkeletonCard />;
     }
     return (
         <>
-            <div className="flex flex-row justify-center items-center pt-10">
-                <h2 className="mb-10 scroll-m-20 border-b pb-2 text-2xl font-semibold tracking-tight transition-colors first:mt-0">
-                    Results
+            <Head>
+                <title>{poll.title}</title>
+                <meta name="description" content="Results of the poll" />
+                <meta name="viewport" content="width=1024" />
+            </Head>
+            <div className="flex flex-col justify-center items-center pt-10">
+                <h2 className="mb-10 scroll-m-20 border-b pb-2 text-slate-300 text-2xl font-semibold tracking-tight transition-colors first:mt-0">
+                    Poll Title : {poll.title}
                 </h2>
+                <h3 className="mb-10 scroll-m-20 border-b pb-2 text-green-300 text-xl font-semibold tracking-tight transition-colors first:mt-0">
+                    Results
+                </h3>
             </div>
             <div className="grid md:grid-flow-col md:auto-cols-max auto-rows-auto gap-10 p-3">
                 {data.map((item: any, index: number) => (
