@@ -59,7 +59,7 @@ export default function Result() {
                                                 <HoverCardTrigger asChild>
                                                     <Button variant="link" className="text-slate-600">@address</Button>
                                                 </HoverCardTrigger>
-                                                <HoverCardContent className="w-80">
+                                                <HoverCardContent className="w-90">
                                                     <div className="flex justify-between space-x-4">
                                                         <div className="space-y-1">
                                                             <h4 className="text-sm font-semibold">Address of the contestant</h4>
@@ -77,32 +77,40 @@ export default function Result() {
                             </Card>
                         </div>
                     ))}
-                    <Card className="w-[330px] h-[150px]">
-                        <CardHeader>
-                            <div className="flex flex-row justify-center items-center">
-                                <CardTitle>Poll Creater</CardTitle>
-                            </div>
-                        </CardHeader>
-                        <CardContent>
-                            <div className="flex flex-col justify-center items-center">
-                                <HoverCard>
-                                    <HoverCardTrigger asChild>
-                                        <Button variant="link" className="text-green-300">@address</Button>
-                                    </HoverCardTrigger>
-                                    <HoverCardContent className="w-90">
-                                        <div className="flex justify-between space-x-4">
-                                            <div className="space-y-1">
-                                                <h4 className="text-sm font-semibold">Address of the creater</h4>
-                                                <p className="text-sm">
-                                                    {poll.director}
-                                                </p>
+                    <div className="flex flex-col">
+                        <Card className="w-[330px] h-[150px]">
+                            <CardHeader>
+                                <div className="flex flex-row justify-center items-center">
+                                    <CardTitle>Poll Creater</CardTitle>
+                                </div>
+                            </CardHeader>
+                            <CardContent>
+                                <div className="flex flex-col justify-center items-center">
+                                    <HoverCard>
+                                        <HoverCardTrigger asChild>
+                                            <Button variant="link" className="text-green-300">@address</Button>
+                                        </HoverCardTrigger>
+                                        <HoverCardContent className="w-90">
+                                            <div className="flex justify-between space-x-4">
+                                                <div className="space-y-1">
+                                                    <h4 className="text-sm font-semibold">Address of the creater</h4>
+                                                    <p className="text-sm">
+                                                        {poll.director}
+                                                    </p>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </HoverCardContent>
-                                </HoverCard>
-                            </div>
-                        </CardContent>
-                    </Card>
+                                        </HoverCardContent>
+                                    </HoverCard>
+                                </div>
+                            </CardContent>
+                        </Card>
+                        <Card className="w-[330px] h-[120px] mt-7">
+                            <CardContent className="p-10">
+                                Ending of the poll
+                                {poll.endsAt}
+                            </CardContent>
+                        </Card>
+                    </div>
                 </div>
                 <div className="flex flex-row items-center justify-start">
                     <Card className="w-[717px] p-5 m-3">
