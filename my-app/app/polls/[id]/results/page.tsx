@@ -105,10 +105,11 @@ export default function Result() {
                             </CardContent>
                         </Card>
                         <Card className="w-[330px] h-[120px] mt-7">
-                            <CardContent className="p-10">
-                                Ending of the poll
-                                {poll.endsAt}
-                            </CardContent>
+                            <div className="flex flex-col justify-center items-center">
+                                <CardContent className="p-10 text-slate-300">
+                                    Ending of the poll : {poll.endsAt}
+                                </CardContent>
+                            </div>
                         </Card>
                     </div>
                 </div>
