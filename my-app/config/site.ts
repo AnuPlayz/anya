@@ -16,7 +16,7 @@ export const siteConfig = {
   ],
   links: {
     twitter: "https://twitter.com/ani__x_",
-    github: "https://github.com/AnuPlayz",
+    github: "https://github.com/AnuPlayz/anya",
     docs: "#",
   },
 }

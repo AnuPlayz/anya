@@ -23,7 +23,7 @@ export default function IndexPage() {
               Beautifully designed voting application <br className="hidden sm:inline" />
               built with Next.js and Solidity.
             </h1>
-            <div className="md:flex md:flex-col items-end justify-end">
+            <div className="md:flex md:flex-col items-center justify-center w-[200px]">
               <img src="/pixelvote.png"></img>
             </div>
             <p className="max-w-[700px] text-lg text-muted-foreground">
