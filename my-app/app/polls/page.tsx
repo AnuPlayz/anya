@@ -34,7 +34,7 @@ export default function Component() {
                     Current Polls :
                 </h2>
             </div>
-            <div className="grid md:grid-flow-col md:auto-cols-max auto-rows-auto gap-5 p-3">
+            <div className="grid grid-cols-auto md:grid-cols-4 gap-5 p-3">
                 {data.map((poll: any) => (
                     <Card className="w-[350px]">
                         <CardHeader className="text-center">

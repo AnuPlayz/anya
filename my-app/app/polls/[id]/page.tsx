@@ -14,6 +14,7 @@ import Contest from "@/components/contest";
 import { SkeletonCard } from "@/components/skeletonPolls";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import DeletePoll from "@/components/deletePoll";
 
 export default function Component() {
     const { contract } = useContract("0x7194f5404B7E34E8D9A27580a1fe8d63feCFF984");
@@ -32,12 +33,13 @@ export default function Component() {
 
     return (
         <>
-            <div className="flex flex-col items-end justify-end pt-5 pr-5">
+            <div className="flex flex-row items-end justify-end pt-5 pr-5 m-2">
                 <Link href={`/polls/${id}/results`}>
                     <Button>Results</Button>
                 </Link>
+                <DeletePoll />
             </div>
-            <div className="flex flex-col items-center justify-start p-10">
+            <div className="flex flex-col items-center justify-start pb-10">
                 <Card className="w-[350px]">
                     <CardHeader className="text-center">
                         <CardTitle>{data.title}</CardTitle>
