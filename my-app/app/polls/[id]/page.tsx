@@ -33,7 +33,7 @@ export default function Component() {
 
     return (
         <>
-            <div className="flex flex-row items-end justify-end pt-5 pr-5 m-2">
+            <div className="flex flex-row items-end justify-end pt-5 p-5 space-x-4">
                 <Link href={`/polls/${id}/results`}>
                     <Button>Results</Button>
                 </Link>
