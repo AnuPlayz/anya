@@ -23,9 +23,6 @@ export default function IndexPage() {
               Beautifully designed voting application <br className="hidden sm:inline" />
               built with Next.js and Solidity.
             </h1>
-            <div className="md:flex md:flex-col items-center justify-center w-[200px]">
-              <img src="/pixelvote.png"></img>
-            </div>
             <p className="max-w-[700px] text-lg text-muted-foreground">
               Easy to host elections and polls and get real-time dashboard for the results. <br />
               Free. Open Source. And Ready.
@@ -53,14 +50,6 @@ export default function IndexPage() {
             })}
             modalSize={"wide"}
           />
-          <Link
-            target="_blank"
-            rel="noreferrer"
-            href={siteConfig.links.github}
-            className={buttonVariants({ variant: "outline" })}
-          >
-            GitHub
-          </Link>
         </div>
         <div className="flex flex-row mt-10">
           <Aadhaar />

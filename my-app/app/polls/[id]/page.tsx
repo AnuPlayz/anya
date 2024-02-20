@@ -59,15 +59,15 @@ export default function Component() {
                 <h2 className="mb-10 scroll-m-20 border-b pb-2 text-2xl font-semibold tracking-tight transition-colors first:mt-0">
                     Current Contestants :
                 </h2>
-                <div className="grid md:grid-flow-col md:auto-cols-max auto-rows-auto gap-10">
+                <div className="grid md:grid-flow-col md:auto-cols-max grid-cols-auto grid-cols-2 gap-5 p-3">
                     {contestants.map((contestant: any) => (
-                        <Card key={contestant.cid} className="w-[350px]">
+                        <Card key={contestant.cid} className="lg:w-[350px] w-[170px]">
                             <CardHeader className="text-center">
                                 <CardTitle>{contestant.name}</CardTitle>
                             </CardHeader>
                             <CardContent className="text-center">
-                                <img src={contestant.image} alt={contestant.name} />
-                                <div className="m-3">
+                                <img className="rounded" src={contestant.image} alt={contestant.name} />
+                                <div className="flex flex-row align-center justify-center m-3">
                                     <Web3Button
                                         contractAddress="0x7194f5404B7E34E8D9A27580a1fe8d63feCFF984"
                                         action={(contract) => {
