@@ -56,7 +56,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
             }),
           ]}
         >
-          <AnonAadhaarProvider>
+          <AnonAadhaarProvider _appId="76e7a3467434ead7fede25a4370397a4">
             <html lang="en" suppressHydrationWarning>
               <head>
                 <title>Pixel Vote</title>
