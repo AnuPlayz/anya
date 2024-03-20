@@ -12,7 +12,7 @@ export const siteConfig = {
     {
       title: "Polls",
       href: "/polls",
-    }
+    },
   ],
   links: {
     twitter: "https://twitter.com/ani__x_",

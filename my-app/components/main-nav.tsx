@@ -38,6 +38,9 @@ export function MainNav({ items }: MainNavProps) {
                 </Link>
               )
           )}
+          <Link href="https://ai.teamnexus.tech" target="_blank" className="flex items-center text-sm font-medium text-muted-foreground">
+            Ask Ai
+          </Link>
         </nav>
       ) : null}
     </div>
