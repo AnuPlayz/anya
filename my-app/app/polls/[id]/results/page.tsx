@@ -41,10 +41,10 @@ export default function Result() {
                         Results
                     </h3>
                 </div>
-                <div className="grid md:grid-flow-col md:auto-cols-max auto-rows-auto gap-10 p-3">
+                <div className="grid grid-cols-3 gap-10 p-3">
                     {data.map((item: any, index: number) => (
                         <div key={index}>
-                            <Card className="w-[550px]">
+                            <Card className="w-[450px]">
                                 <CardHeader>
                                     <div className="flex flex-row justify-center items-center">
                                         <CardTitle>Contestant #{parseInt(item.id._hex)}</CardTitle>
@@ -77,41 +77,6 @@ export default function Result() {
                             </Card>
                         </div>
                     ))}
-                    <div className="flex flex-col">
-                        <Card className="w-[330px] h-[150px]">
-                            <CardHeader>
-                                <div className="flex flex-row justify-center items-center">
-                                    <CardTitle>Poll Creater</CardTitle>
-                                </div>
-                            </CardHeader>
-                            <CardContent>
-                                <div className="flex flex-col justify-center items-center">
-                                    <HoverCard>
-                                        <HoverCardTrigger asChild>
-                                            <Button variant="link" className="text-green-300">@address</Button>
-                                        </HoverCardTrigger>
-                                        <HoverCardContent className="w-90">
-                                            <div className="flex justify-between space-x-4">
-                                                <div className="space-y-1">
-                                                    <h4 className="text-sm font-semibold">Address of the creater</h4>
-                                                    <p className="text-sm">
-                                                        {poll.director}
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </HoverCardContent>
-                                    </HoverCard>
-                                </div>
-                            </CardContent>
-                        </Card>
-                        <Card className="w-[330px] h-[120px] mt-7">
-                            <div className="flex flex-col justify-center items-center">
-                                <CardContent className="p-10 text-slate-300">
-                                    Ending of the poll : {poll.endsAt}
-                                </CardContent>
-                            </div>
-                        </Card>
-                    </div>
                 </div>
                 <div className="flex flex-row items-center justify-start">
                     <Card className="w-[717px] p-5 m-3">
@@ -126,6 +91,37 @@ export default function Result() {
                             ))}
                         </div>
                     </ScrollArea>
+                    <div className="grid grid-row-2 p-3">
+                        <Card>
+                            <CardHeader>
+                                <CardTitle>Poll Creater</CardTitle>
+                            </CardHeader>
+                            <CardContent>
+                                <HoverCard>
+                                    <HoverCardTrigger asChild>
+                                        <Button variant="link" className="text-green-300">@address</Button>
+                                    </HoverCardTrigger>
+                                    <HoverCardContent className="w-90">
+                                        <div className="flex justify-between space-x-4">
+                                            <div className="space-y-1">
+                                                <h4 className="text-sm font-semibold">Address of the creater</h4>
+                                                <p className="text-sm">
+                                                    {poll.director}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </HoverCardContent>
+                                </HoverCard>
+                            </CardContent>
+                        </Card>
+                        <Card className="w-[330px] h-[120px] mt-7">
+                            <div className="flex flex-col justify-center items-center">
+                                <CardContent className="p-10 text-slate-300">
+                                    Ending of the poll : {poll.endsAt}
+                                </CardContent>
+                            </div>
+                        </Card>
+                    </div>
                 </div>
             </div >
         </>
